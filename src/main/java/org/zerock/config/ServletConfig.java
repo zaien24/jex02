@@ -14,7 +14,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 @EnableWebMvc
-@ComponentScan(basePackages= {"org.zerock.controller", "org.zerock.exception" })
+@ComponentScan(basePackages= { "org.zerock.controller" })
 public class ServletConfig implements WebMvcConfigurer {
 	
 	@Override
@@ -32,28 +32,6 @@ public class ServletConfig implements WebMvcConfigurer {
 		
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 		
-	}
-	
-	@Bean(name = "multipartResolver")
-	public CommonsMultipartResolver getResolver() throws IOException {
-		CommonsMultipartResolver resolver = new CommonsMultipartResolver();
-
-		// 10MB
-		resolver.setMaxUploadSize(1024 * 1024 * 10);
-
-		// 2MB
-		resolver.setMaxUploadSizePerFile(1024 * 1024 * 2);
-
-		// 1MB
-		resolver.setMaxInMemorySize(1024 * 1024);
-
-		// temp upload
-		resolver.setUploadTempDir(new FileSystemResource("C:\\dev3\\upload\\tmp"));
-
-		resolver.setDefaultEncoding("UTF-8");
-
-		return resolver;
-	}
-	
+	}	
 
 }
